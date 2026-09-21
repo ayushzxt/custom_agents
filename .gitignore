@@ -23,3 +23,6 @@ frontend/coverage/
 
 # Logs
 *.log
+
+# Agent-generated task briefs (local scratch, not shared via git)
+.tasks/
