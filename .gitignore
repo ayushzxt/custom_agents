@@ -13,7 +13,8 @@ frontend/coverage/
 # IDE
 .idea/
 *.iml
-.vscode/
+.vscode/*
+!.vscode/mcp.json
 .DS_Store
 
 # Env / secrets
