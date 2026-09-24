@@ -115,8 +115,11 @@ Four mechanisms do the work:
 - **`tools` enforces least privilege.** The frontmatter list is the agent's entire capability set.
   `code-reviewer` and `security-reviewer` have no `edit`; `jira-story-reader` and
   `solution-architect` get it solely for `.tasks/`.
-- **MCP servers are referenced by name.** `atlassian/*` for Jira (read operations only, by
-  instruction) and `figma/*` for design tokens — declared only on the agents that need them.
+- **MCP tools are scoped, not wildcarded, where it matters.** `jira-story-reader` lists only the
+  four Jira read tools it needs (`atlassian/searchJiraIssuesUsingJql`, `getJiraIssue`,
+  `getJiraIssueRemoteIssueLinks`, `atlassianUserInfo`) — so it structurally cannot write to Jira,
+  and ~40 unused Atlassian tool definitions stay out of its context. `figma/*` is declared only
+  on `react-frontend-dev`.
 - **Instructions layer, they don't repeat.** `copilot-instructions.md` holds shared conventions,
   `instructions/*.instructions.md` adds per-path rules automatically, and each agent file only
   carries what's unique to its role.
